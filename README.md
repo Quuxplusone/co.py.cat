@@ -73,3 +73,22 @@ $ python
 ```
 
 The result of `run` is a dict containing the same information as was printed by `main.py` above.
+
+
+Deploying to Heroku
+-------------------
+
+To build and deploy to localhost with Heroku:
+
+    easy_install pip
+    pip install -r requirements.txt
+    brew install heroku
+    heroku local
+    open http://localhost:5000/
+
+To build and deploy to the web with Heroku:
+
+    brew install heroku
+    heroku create farg-copycat
+    git push heroku heroku:master
+    heroku open

@@ -1,0 +1,13 @@
+{
+    "name": "Copycat",
+    "description": "Python implementation of Douglas Hofstadter's Copycat.",
+    "image": "heroku/python",
+    "success_url": "/",
+    "formation": {
+        "web": {
+            "quantity": 1
+        }
+    },
+    "repository": "https://github.com/Quuxplusone/Copycat",
+    "keywords": ["ai", "analogy", "copycat", "farg", "fargitecture", "hofstadter", "slipnet"]
+}

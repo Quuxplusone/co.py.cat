@@ -1,0 +1,4 @@
+bottle>=0.12.13
+-e git+https://github.com/Quuxplusone/co.py.cat.git/#egg=copycat
+gevent>=1.2.1
+gevent-websocket>=0.10.1
