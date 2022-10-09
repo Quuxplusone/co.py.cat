@@ -83,7 +83,7 @@ class WorkspaceObject(WorkspaceStructure):
             interStringHappiness = self.correspondence.totalStrength
         self.interStringUnhappiness = 100.0 - interStringHappiness
 
-        averageHappiness = (intraStringHappiness + interStringHappiness) / 2
+        averageHappiness = (intraStringHappiness + interStringHappiness) / 2.0
         self.totalUnhappiness = 100.0 - averageHappiness
 
         self.intraStringSalience = weightedAverage((

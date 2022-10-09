@@ -242,7 +242,7 @@ def __supportForDescriptionType(ctx, descriptionType, string):
             total += 1
             described_count += sum(1 for d in o.descriptions if d.descriptionType == descriptionType)
     string_support = described_count / float(total)
-    return (descriptionType.activation + string_support) / 2
+    return (descriptionType.activation + string_support) / 2.0
 
 
 def __chooseBondFacet(ctx, source, destination):
@@ -804,7 +804,7 @@ def group_builder(ctx, codelet):
         incompatible.break_the_structure()
     # create new bonds
     group.bondList = []
-    for i in xrange(1, len(group.objectList)):
+    for i in range(1, len(group.objectList)):
         object1 = group.objectList[i - 1]
         object2 = group.objectList[i]
         if not object1.rightBond:

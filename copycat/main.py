@@ -6,9 +6,9 @@ from copycat import Copycat, Reporter
 
 class SimpleReporter(Reporter):
     def report_answer(self, answer):
-        print 'Answered %s (time %d, final temperature %.1f)' % (
+        print('Answered %s (time %d, final temperature %.1f)' % (
             answer['answer'], answer['time'], answer['temp'],
-        )
+        ))
 
 
 if __name__ == '__main__':
@@ -25,5 +25,5 @@ if __name__ == '__main__':
     copycat = Copycat(reporter=SimpleReporter(), rng_seed=options.seed)
     answers = copycat.run(options.initial, options.modified, options.target, options.iterations)
 
-    for answer, d in sorted(answers.iteritems(), key=lambda kv: kv[1]['avgtemp']):
-        print '%s: %d (avg time %.1f, avg temp %.1f)' % (answer, d['count'], d['avgtime'], d['avgtemp'])
+    for answer, d in sorted(answers.items(), key=lambda kv: kv[1]['avgtemp']):
+        print('%s: %d (avg time %.1f, avg temp %.1f)' % (answer, d['count'], d['avgtime'], d['avgtemp']))

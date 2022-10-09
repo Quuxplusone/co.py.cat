@@ -21,7 +21,7 @@ class SafeSubwindow(object):
         try:
             self.w.addstr(y, x, s, attr)
         except Exception as e:
-            if str(e) != 'addstr() returned ERR':
+            if str(e) not in ['addstr() returned ERR', 'addwstr() returned ERR']:
                 raise
 
     def border(self):
@@ -122,12 +122,12 @@ class CursesReporter(Reporter):
                 d['answer'], d['count'], d['avgtime'], d['avgtemp'],
             )
 
-        answersToPrint = sorted(self.answers.itervalues(), key=fitness, reverse=True)
+        answersToPrint = sorted(self.answers.values(), key=fitness, reverse=True)
 
         w = self.answersWindow
         pageWidth = w.getmaxyx()[1]
         if pageWidth >= 96:
-            columnWidth = (pageWidth - 6) / 2
+            columnWidth = (pageWidth - 6) // 2
             for i, d in enumerate(answersToPrint[:3]):
                 w.addnstr(i+1, 2, represent(d), columnWidth)
             for i, d in enumerate(answersToPrint[3:6]):
@@ -168,14 +168,14 @@ class CursesReporter(Reporter):
         # Combine duplicate codelets for printing.
         counts = {}
         for c in coderack.codelets:
-            assert 1 <= c.urgency <= NUMBER_OF_BINS
+            assert 1 <= c.urgency <= NUMBER_OF_BINS, c.urgency
             key = (c.urgency, c.name)
             counts[key] = counts.get(key, 0) + 1
 
         # Sort the most common and highest-urgency codelets to the top.
         entries = sorted(
             (count, key[0], key[1])
-            for key, count in counts.iteritems()
+            for key, count in counts.items()
         )
 
         # Figure out how we'd like to render each codelet's name.
@@ -188,7 +188,7 @@ class CursesReporter(Reporter):
         # as close to the top of the page as physically possible.
         w = self.coderackWindow
         pageHeight, pageWidth = w.getmaxyx()
-        columnWidth = (pageWidth - len('important-object-correspondence-scout (n)')) / (NUMBER_OF_BINS - 1)
+        columnWidth = (pageWidth - len('important-object-correspondence-scout (n)')) // (NUMBER_OF_BINS - 1)
 
         w.erase()
         for u, string in printable_entries:
@@ -196,7 +196,7 @@ class CursesReporter(Reporter):
             start_column = (u - 1) * columnWidth
             end_column = start_column + len(string)
             for r in range(pageHeight):
-                if all(w.is_vacant(r, c) for c in xrange(start_column, end_column+20)):
+                if all(w.is_vacant(r, c) for c in range(start_column, end_column+20)):
                     w.addstr(r, start_column, string)
                     break
         w.refresh()
@@ -308,7 +308,7 @@ class CursesReporter(Reporter):
         else:
             w.addstr(firstrow, column, '\\', curses.A_NORMAL)
             w.addstr(lastrow, column, '/', curses.A_NORMAL)
-            for r in xrange(firstrow + 1, lastrow):
+            for r in range(firstrow + 1, lastrow):
                 w.addstr(r, column, '|', curses.A_NORMAL)
 
     def report_workspace(self, workspace):
@@ -410,16 +410,16 @@ class CursesReporter(Reporter):
                 end = endrow_for_group[group]
                 # Place this group's graphical depiction.
                 depiction_width = 3 + self.length_of_workspace_object_depiction(group, description_structures)
-                for firstcolumn in xrange(max_column, 1000):
+                for firstcolumn in range(max_column, 1000):
                     lastcolumn = firstcolumn + depiction_width
                     okay = all(
                         w.is_vacant(r, c)
-                        for c in xrange(firstcolumn, lastcolumn + 1)
-                        for r in xrange(start, end + 1)
+                        for c in range(firstcolumn, lastcolumn + 1)
+                        for r in range(start, end + 1)
                     )
                     if okay:
                         self.depict_grouping_brace(w, start, end, firstcolumn + 1)
-                        self.depict_workspace_object(w, (start + end) / 2, firstcolumn + 3, group, maxImportance, description_structures)
+                        self.depict_workspace_object(w, (start + end) // 2, firstcolumn + 3, group, maxImportance, description_structures)
                         break
 
         row += 1

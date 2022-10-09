@@ -65,7 +65,7 @@ Installing the module
 To install the Python module and get started with it, run these commands:
 
 ```
-$ pip install -e git+git://github.com/Quuxplusone/co.py.cat.git#egg=copycat
+$ pip install -e git+https://github.com/Quuxplusone/co.py.cat.git/#egg=copycat
 $ python
 >>> from copycat import Copycat
 >>> Copycat().run('abc', 'abd', 'ppqqrr', 10)

@@ -26,7 +26,7 @@ class Description(WorkspaceStructure):
 
     def updateExternalStrength(self):
         self.externalStrength = (self.localSupport() +
-                                 self.descriptionType.activation) / 2
+                                 self.descriptionType.activation) / 2.0
 
     def localSupport(self):
         workspace = self.ctx.workspace
