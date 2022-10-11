@@ -69,11 +69,11 @@ class Slipnode(object):
 
     def linked(self, other):
         """Whether the other is among the outgoing links"""
-        return any(l.points_at(other) for l in self.outgoingLinks)
+        return any(link.points_at(other) for link in self.outgoingLinks)
 
     def slipLinked(self, other):
         """Whether the other is among the lateral links"""
-        return any(l.points_at(other) for l in self.lateralSlipLinks)
+        return any(link.points_at(other) for link in self.lateralSlipLinks)
 
     def related(self, other):
         """Same or linked"""
@@ -93,8 +93,10 @@ class Slipnode(object):
         slipnet = self.slipnet
         if relation == slipnet.identity:
             return self
-        destinations = [l.destination
-                        for l in self.outgoingLinks if l.label == relation]
+        destinations = [
+            link.destination
+            for link in self.outgoingLinks if link.label == relation
+        ]
         if destinations:
             return destinations[0]
         return None

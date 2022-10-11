@@ -66,9 +66,9 @@ class Group(WorkspaceObject):
 
     def __str__(self):
         s = self.string.__str__()
-        l = self.leftIndex - 1
-        r = self.rightIndex
-        return 'group[%d:%d] == %s' % (l, r - 1, s[l:r])
+        left = self.leftIndex - 1
+        right = self.rightIndex
+        return 'group[%d:%d] == %s' % (left, right - 1, s[left:right])
 
     def getIncompatibleGroups(self):
         result = []
