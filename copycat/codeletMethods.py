@@ -908,7 +908,7 @@ def bottom_up_correspondence_scout(ctx, codelet):
                  and m.initialDescriptionType != slipnet.bondFacet]
     initialDescriptionTypes = [m.initialDescriptionType for m in opposites]
     flipTargetObject = False
-    if  (objectFromInitial.spansString() and
+    if (objectFromInitial.spansString() and
          objectFromTarget.spansString() and
          slipnet.directionCategory in initialDescriptionTypes
          and all(m.label == slipnet.opposite for m in opposites)  # unreached?
@@ -967,7 +967,7 @@ def important_object_correspondence_scout(ctx, codelet):
                  and m.initialDescriptionType != slipnet.bondFacet]
     initialDescriptionTypes = [m.initialDescriptionType for m in opposites]
     flipTargetObject = False
-    if  (objectFromInitial.spansString()
+    if (objectFromInitial.spansString()
          and objectFromTarget.spansString()
          and slipnet.directionCategory in initialDescriptionTypes
          and all(m.label == slipnet.opposite for m in opposites)  # unreached?
@@ -1051,7 +1051,7 @@ def correspondence_builder(ctx, codelet):
     # if there is an incompatible bond then fight against it
     initial = correspondence.objectFromInitial
     target = correspondence.objectFromTarget
-    if  (initial.leftmost or initial.rightmost and
+    if (initial.leftmost or initial.rightmost and
          target.leftmost or target.rightmost):
         # search for the incompatible bond
         incompatibleBond = correspondence.getIncompatibleBond()
