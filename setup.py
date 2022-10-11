@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='copycat',
-    version='0.0.1',
+    version='0.1.0',
     packages=['copycat'],
     install_requires=[
         # pip requirements go here; at the moment there are none
