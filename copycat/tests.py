@@ -1,6 +1,6 @@
 import unittest
 
-from copycat import Copycat
+from copycatClass import Copycat
 
 
 def pnormaldist(p):

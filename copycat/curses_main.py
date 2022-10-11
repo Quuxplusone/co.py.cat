@@ -2,7 +2,7 @@ import argparse
 import curses
 import logging
 
-from copycat import Copycat
+from copycatClass import Copycat
 from curses_reporter import CursesReporter
 
 

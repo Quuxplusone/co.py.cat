@@ -1,7 +1,7 @@
 import curses
 import time
 
-from copycat import Reporter
+from copycatClass import Reporter
 from bond import Bond
 from correspondence import Correspondence
 from description import Description

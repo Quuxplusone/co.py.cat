@@ -1,7 +1,7 @@
 import argparse
 import logging
 
-from copycat import Copycat, Reporter
+from copycatClass import Copycat, Reporter
 
 
 class SimpleReporter(Reporter):
