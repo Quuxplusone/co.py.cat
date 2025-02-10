@@ -14,6 +14,11 @@ J Alan Brogan writes:
 > from [Melanie Mitchell](https://en.wikipedia.org/wiki/Melanie_Mitchell)'s book
 > "[Analogy-Making as Perception](http://www.amazon.com/Analogy-Making-Perception-Computer-Melanie-Mitchell/dp/0262132893/ref=tmm_hrd_title_0?ie=UTF8&qid=1351269085&sr=1-3)".
 
+For a very large selection of Copycat problems, see Melanie Mitchell's list
+[here](https://melaniemitchell.me/ExplorationsContent/analogy-problems.html).
+The same list is mirrored as EXAMPLES.txt in this repository.
+
+
 Running the command-line program
 --------------------------------
 
@@ -22,13 +27,12 @@ To clone the repo locally, run these commands:
 ```
 $ git clone https://github.com/Quuxplusone/co.py.cat.git
 $ cd co.py.cat/copycat
-$ python main.py abc abd ppqqrr 10
+$ python main.py --iterations 10 abc abd ppqqrr
 ```
 
-The script takes three or four arguments.
+The script takes three non-named arguments.
 The first two are a pair of strings with some change, for example "abc" and "abd".
 The third is a string which the script should try to change analogously.
-The fourth (which defaults to "1") is a number of iterations.
 
 This might produce output such as
 

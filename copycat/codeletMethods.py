@@ -16,7 +16,7 @@ from correspondence import Correspondence
 def codelet(name):
     """Decorator for otherwise-unused functions that are in fact used as codelet behaviors"""
     def wrap(f):
-        assert tuple(inspect.getargspec(f)) == (['ctx', 'codelet'], None, None, None)
+        assert str(inspect.signature(f)) == '(ctx, codelet)'
         f.is_codelet_method = True
         f.codelet_name = name
         return f
